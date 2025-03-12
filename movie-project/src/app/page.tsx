@@ -1,14 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import Input from "@/components/Input";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import {Card} from "@/components/card/card";
 import {MovieData} from "@/interface/MovieData";
+import {useMovieData} from "@/hooks/useMovieData";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-export default function Home() {
-    const data: MovieData[] = [];
+const queryClient = new QueryClient();
+
+export default function App() {
+    const { data } = useMovieData();
 
     return (
-    <div className="">
+
       <div>
         <div className="m-5">
             <Input placeholder="Escreva ou cole um link"/>
@@ -17,13 +23,14 @@ export default function Home() {
               <h1 className="text-2xl">Popular - Movie</h1>
           </div>
           <div className="flex bg-amber-300 p-5 m-5 flex-row">
-              data.map(movieData =>
-              <Card
-                  title={movieData.title}
-                  image={movieData.image}
-              />
+              {data.map((movieData: MovieData) => (
+                  <Card key={movieData.id}
+                        title={movieData.title}
+                        image={movieData.image}
+                  />
+              ))}
           </div>
       </div>
-    </div>
+
     );
-    }
+}
