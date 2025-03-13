@@ -30,19 +30,10 @@ export default function AddMovieModal({isOpen, onClose, onAddMovie}: AddMovieMod
                 <h2 className="text-2xl font-bold mb-4">Adicionar Novo Filme</h2>
                 <form>
                     <div className="mb-4">
-                        <Input label={"Título"} className={"w-full p-2 border rounded-lg"} placeholder={"Nome do Filme"}
-                               value={newMovie.title} onChange={handleInputChange}/>
+                        <Input label={"Título"} placeholder={"Nome do Filme"} value={newMovie.title} onChange={handleInputChange}/>
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700">Imagem (URL)</label>
-                        <input
-                            type="text"
-                            name="image"
-                            value={newMovie.image}
-                            onChange={handleInputChange}
-                            className="w-full p-2 border rounded-lg"
-                            placeholder="URL da imagem"
-                        />
+                        <Input label={"Capa do Filme"} placeholder={"URL da Imagem"} value={newMovie.image} onChange={handleInputChange}/>
                     </div>
                     <div className="flex justify-end">
                         <button
