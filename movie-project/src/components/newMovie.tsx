@@ -1,34 +1,58 @@
-import {useState} from "react";
+"use client";
 
-const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-const [newMovie, setNewMovie] = useState({ title: "", image: "" });
-const openAddModal = () => {
-    setIsAddModalOpen(true);
-};
+import { useState } from "react";
+import AddMovieModal from "./addMovieModal";
 
-const closeAddModal = () => {
-    setIsAddModalOpen(false);
-    setNewMovie({ title: "", image: "" });
-};
+export default function NewMovie() {
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [newMovie, setNewMovie] = useState({ title: "", image: "" });
 
-const handleAddMovie = async () => {
-    try {
-        const response = await fetch("http://localhost:8080/movie", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newMovie),
-        });
+    const openAddModal = () => {
+        setIsAddModalOpen(true);
+    };
 
-        if (!response.ok) {
-            throw new Error("Erro ao adicionar filme");
+    const closeAddModal = () => {
+        setIsAddModalOpen(false);
+        setNewMovie({ title: "", image: "" });
+    };
+
+    const handleAddMovie = async () => {
+        try {
+            const response = await fetch("http://localhost:8080/movie", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newMovie),
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao adicionar filme");
+            }
+
+            closeAddModal();
+            console.log("Filme adicionado com sucesso!");
+        } catch (error) {
+            console.error("Erro:", error);
         }
+    };
 
-        closeAddModal();
+    return (
+        <>
+            <button
+                onClick={openAddModal}
+                className="bg-green-500 text-white px-4 py-2 rounded-lg"
+            >
+                Adicionar Filme
+            </button>
 
-        console.log("Filme adicionado com sucesso!");
-    } catch (error) {
-        console.error("Erro:", error);
-    }
-};
+            <AddMovieModal
+                isOpen={isAddModalOpen}
+                onClose={closeAddModal}
+                onAddMovie={handleAddMovie}
+                newMovie={newMovie}
+                setNewMovie={setNewMovie}
+            />
+        </>
+    );
+}

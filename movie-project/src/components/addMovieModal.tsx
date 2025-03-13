@@ -1,25 +1,25 @@
 "use client";
 
-import {useState} from "react";
 import Input from "@/components/Input";
 
 interface AddMovieModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onAddMovie: (movie: { title: string; image: string; }) => void;
+    onAddMovie: () => void;
+    newMovie: { title: string; image: string };
+    setNewMovie: (movie: { title: string; image: string }) => void;
 }
 
-export default function AddMovieModal({isOpen, onClose, onAddMovie}: AddMovieModalProps) {
-    const [newMovie, setNewMovie] = useState({title: "", image: ""});
-
+export default function AddMovieModal({
+    isOpen,
+    onClose,
+    onAddMovie,
+    newMovie,
+    setNewMovie,
+}: AddMovieModalProps) {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const {name, value} = e.target;
-        setNewMovie({...newMovie, [name]: value});
-    };
-
-    const handleSubmit = () => {
-        onAddMovie(newMovie);
-        setNewMovie({title: "", image: ""});
+        const { name, value } = e.target;
+        setNewMovie({ ...newMovie, [name]: value });
     };
 
     if (!isOpen) return null;
@@ -30,10 +30,22 @@ export default function AddMovieModal({isOpen, onClose, onAddMovie}: AddMovieMod
                 <h2 className="text-2xl font-bold mb-4">Adicionar Novo Filme</h2>
                 <form>
                     <div className="mb-4">
-                        <Input label={"Título"} placeholder={"Nome do Filme"} value={newMovie.title} onChange={handleInputChange}/>
+                        <Input
+                            label={"Título"}
+                            placeholder={"Nome do Filme"}
+                            name={"title"}
+                            value={newMovie.title}
+                            onChange={handleInputChange}
+                        />
                     </div>
                     <div className="mb-4">
-                        <Input label={"Capa do Filme"} placeholder={"URL da Imagem"} value={newMovie.image} onChange={handleInputChange}/>
+                        <Input
+                            label={"Capa do Filme"}
+                            placeholder={"URL da Imagem"}
+                            name={"image"}
+                            value={newMovie.image}
+                            onChange={handleInputChange}
+                        />
                     </div>
                     <div className="flex justify-end">
                         <button
@@ -45,7 +57,7 @@ export default function AddMovieModal({isOpen, onClose, onAddMovie}: AddMovieMod
                         </button>
                         <button
                             type="button"
-                            onClick={handleSubmit}
+                            onClick={onAddMovie}
                             className="bg-green-500 text-white px-4 py-2 rounded-lg"
                         >
                             Adicionar
