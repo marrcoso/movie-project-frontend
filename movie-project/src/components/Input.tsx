@@ -14,7 +14,7 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaE
 
 const Input: React.FC<InputProps> = ({label, placeholder, value, handleInputChange, name, ...props}) => {
     return (
-        <div className="flex justify-center p-5">
+        <div className="flex justify-center p-4">
             {label && <label className="text-sm font-medium text-gray-700 mb-1">{label}</label>}
             <input
                 type="text"

@@ -10,8 +10,16 @@ import NewMovie from "@/components/newMovie";
 const queryClient = new QueryClient();
 
 export default function App() {
-    const { data } = useMovieData();
+    return (
+        <QueryClientProvider client={queryClient}>
+            <MovieList />
+        </QueryClientProvider>
+    );
+}
     
+function MovieList() {
+    const { data } = useMovieData();
+
     return (
         <div>
             <div className="m-5 flex row">
@@ -25,7 +33,7 @@ export default function App() {
                 <h1 className="text-2xl">Popular - Movie</h1>
             </div>
             <div className="flex bg-amber-300 p-5 m-5 flex-row">
-                {data.map((movieData: MovieData) => (
+                {data?.map((movieData: MovieData) => (
                     <Card key={movieData.id}
                         title={movieData.title}
                         image={movieData.image}
