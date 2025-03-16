@@ -1,6 +1,7 @@
 "use client";
 
 import Input from "@/components/Input";
+import Label from "@/components/Label";
 
 interface AddMovieModalProps {
     isOpen: boolean;
@@ -30,8 +31,9 @@ export default function AddMovieModal({
                 <h2 className="text-2xl font-bold mb-4">Adicionar Novo Filme</h2>
                 <form>
                     <div className="mb-4">
+                        <Label label={"Nome"} htmlFor={"title"}/>
                         <Input
-                            label={"Título"}
+                            id={"title"}
                             placeholder={"Nome do Filme"}
                             name={"title"}
                             value={newMovie.title}
@@ -39,8 +41,9 @@ export default function AddMovieModal({
                         />
                     </div>
                     <div className="mb-4">
+                        <Label label={"Capa do Filme"} htmlFor={"image"}/>
                         <Input
-                            label={"Capa do Filme"}
+                            id={"image"}
                             placeholder={"URL da Imagem"}
                             name={"image"}
                             value={newMovie.image}

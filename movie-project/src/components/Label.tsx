@@ -1,14 +1,13 @@
 import React from "react";
 
-interface LabelProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
     label?: string;
+    htmlFor?: string;
 }
 
-const Label: React.FC<LabelProps> = ({label, ...props}) => {
+const Label: React.FC<LabelProps> = ({label, htmlFor, ...props}) => {
     return (
-        <div className="flex justify-center p-4">
-            {label && <label className="text-sm font-medium text-gray-700 mb-1">{label}</label>}
-        </div>
+            <label htmlFor={htmlFor} className="text-sm font-medium text-gray-700 mb-1 pl-5" {...props}>{label}</label>
     );
 };
 
