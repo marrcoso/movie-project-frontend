@@ -9,7 +9,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const Input: React.FC<InputProps> = ({placeholder, value, id, onChange, name, ...props}) => {
     return (
-        <div className="flex flex-col gap-1 p-4">
+        <div className="flex flex-col gap-1 pb-5">
             <input
                 id={id}
                 type="text"
