@@ -11,8 +11,10 @@ export default function Home() {
 
     return (
         <div>
-            <div className="m-5 flex row">
-                <Input placeholder="Escreva ou cole um link" />
+            <div className="m-10 flex justify-between items-center">
+                <div className="flex-1 flex justify-center">
+                    <Input placeholder="Escreva ou cole um link" />
+                </div>
                 <NewMovie />
             </div>
             <div className="text-white flex mx-20 justify-between items-center">

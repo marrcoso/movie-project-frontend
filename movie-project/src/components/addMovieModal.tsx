@@ -32,23 +32,27 @@ export default function AddMovieModal({
                 <form>
                     <div className="mb-4">
                         <Label label={"Nome"} htmlFor={"title"}/>
-                        <Input
-                            id={"title"}
-                            placeholder={"Nome do Filme"}
-                            name={"title"}
-                            value={newMovie.title}
-                            onChange={handleInputChange}
-                        />
+                        <div className="pb-4">
+                            <Input
+                                id={"title"}
+                                placeholder={"Nome do Filme"}
+                                name={"title"}
+                                value={newMovie.title}
+                                onChange={handleInputChange}
+                            />
+                        </div>
                     </div>
                     <div className="mb-4">
                         <Label label={"Capa do Filme"} htmlFor={"image"}/>
-                        <Input
-                            id={"image"}
-                            placeholder={"URL da Imagem"}
-                            name={"image"}
-                            value={newMovie.image}
-                            onChange={handleInputChange}
-                        />
+                        <div className="pb-4">
+                            <Input
+                                id={"image"}
+                                placeholder={"URL da Imagem"}
+                                name={"image"}
+                                value={newMovie.image}
+                                onChange={handleInputChange}
+                            />
+                        </div> 
                     </div>
                     <div className="flex justify-end">
                         <button
