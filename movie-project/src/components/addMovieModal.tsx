@@ -27,8 +27,8 @@ export default function AddMovieModal({
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-5 rounded-lg w-1/2">
-                <h2 className="text-2xl font-bold mb-4">Adicionar Novo Filme</h2>
+            <div className="bg-[#2F194D] p-5 rounded-lg w-1/2">
+                <h2 className="text-2xl text-white font-bold mb-4">Adicionar Novo Filme</h2>
                 <form>
                     <div className="mb-4">
                         <Label label={"Nome"} htmlFor={"title"}/>

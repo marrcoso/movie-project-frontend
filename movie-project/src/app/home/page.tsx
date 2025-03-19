@@ -10,7 +10,7 @@ export default function Home() {
     const { data } = useMovieData();
 
     return (
-        <div>
+        <div className="bg-gradient-to-bl from-[#19092E] to-[#301A4E]  min-h-screen flex flex-col">
             <div className="m-10 flex justify-between items-center">
                 <div className="flex-1 flex justify-center">
                     <Input placeholder="Escreva ou cole um link" />
