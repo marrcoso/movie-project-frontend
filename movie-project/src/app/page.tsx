@@ -1,6 +1,6 @@
 "use client";
 
-import Home from "@/pages/home";
+import Home from "@/app/home/page";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
