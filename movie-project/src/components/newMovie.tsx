@@ -18,7 +18,7 @@ export default function NewMovie() {
 
     const handleAddMovie = async () => {
         try {
-            const response = await fetch("http://localhost:8080/movie", {
+            const response = await fetch("http://localhost:8080", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
