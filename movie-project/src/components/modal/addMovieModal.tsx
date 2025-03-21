@@ -2,6 +2,8 @@
 
 import Input from "@/components/Input";
 import Label from "@/components/Label";
+import { useMovieDataMutate } from "@/hooks/useMovieDataMutate";
+import { MovieData } from "@/interface/MovieData";
 
 interface AddMovieModalProps {
     isOpen: boolean;
@@ -22,6 +24,14 @@ export default function AddMovieModal({
         const { name, value } = e.target;
         setNewMovie({ ...newMovie, [name]: value });
     };
+    const { mutate } = useMovieDataMutate();
+    const submit = () => {
+        const movieData: MovieData = {
+            title,
+            image
+        }
+        mutate(movieData)
+    }
 
     if (!isOpen) return null;
 

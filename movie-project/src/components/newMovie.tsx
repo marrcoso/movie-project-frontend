@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import AddMovieModal from "./modal/addMovieModal";
+import AddMovieModal from "@/components/modal/addMovieModal";
 
 export default function NewMovie() {
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
