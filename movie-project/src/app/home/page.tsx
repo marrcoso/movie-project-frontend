@@ -20,10 +20,7 @@ export default function Home() {
             <div className="text-white flex mx-20 justify-between items-center">
                 <h1 className="text-2xl">Popular - Movie</h1>
             </div>
-            <div className="text-white flex mx-20">
-                <h1 className="text-2xl">Popular - Movie</h1>
-            </div>
-            <div className="flex bg-amber-300 p-5 m-5 flex-row">
+            <div className="grid grid-cols-1 bg-amber-300 p-5 m-5 gap-4">
                 {data?.map((movieData: MovieData) => (
                     <Card key={movieData.id}
                         title={movieData.title}
@@ -31,6 +28,10 @@ export default function Home() {
                     />
                 ))}
             </div>
+            <div className="text-white flex mx-20">
+                <h1 className="text-2xl">Popular - Movie</h1>
+            </div>
+            
         </div>
     );
 }
