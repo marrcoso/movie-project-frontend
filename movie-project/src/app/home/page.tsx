@@ -5,9 +5,10 @@ import { Card } from "@/components/card/card";
 import { MovieData } from "@/interface/MovieData";
 import { useMovieData } from "@/hooks/useMovieData";
 import NewMovie from "@/components/newMovie";
+import {CardSkeleton} from "@/components/card/cardSkeleton";
 
 export default function Home() {
-    const { data } = useMovieData();
+    const { data, isLoading } = useMovieData();
 
     return (
         <div className="bg-gradient-to-bl from-[#19092E] to-[#301A4E]  min-h-screen flex flex-col">
@@ -20,18 +21,23 @@ export default function Home() {
             <div className="text-white flex mx-20 justify-between items-center">
                 <h1 className="text-2xl">Popular - Movie</h1>
             </div>
-            <div className="grid grid-cols-1 bg-amber-300 p-5 m-5 gap-4">
-                {data?.map((movieData: MovieData) => (
-                    <Card key={movieData.id}
-                        title={movieData.title}
-                        image={movieData.image}
-                    />
-                ))}
+            <div className="flex justify-center wl-10 w-10 bg-amber-300">
+                {isLoading ? (
+                    Array.from({ length: 3 }).map((_, index) => (
+                        <CardSkeleton key={index} />
+                    ))
+                ) : (
+                    data?.map((movieData: MovieData) => (
+                        <Card key={movieData.id}
+                            title={movieData.title}
+                            image={movieData.image}
+                        />
+                    ))
+                )}
             </div>
             <div className="text-white flex mx-20">
                 <h1 className="text-2xl">Popular - Movie</h1>
             </div>
-            
         </div>
     );
 }
