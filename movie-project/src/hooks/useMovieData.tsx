@@ -15,7 +15,8 @@ export function useMovieData() {
     const query = useQuery({
         queryFn: fetchData,
         queryKey: ["movie-data"],
-        retry: 2
+        retry: 2,
+        staleTime: 1000
     })
 
     return {

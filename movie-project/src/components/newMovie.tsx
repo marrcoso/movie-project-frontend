@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import AddMovieModal from "@/components/modal/addMovieModal";
+import { useMovieData } from "@/hooks/useMovieData";
 
 export default function NewMovie() {
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [newMovie, setNewMovie] = useState({ title: "", image: "" });
+    const { refetch } = useMovieData();
 
     const openAddModal = () => {
         setIsAddModalOpen(true);
@@ -31,6 +33,7 @@ export default function NewMovie() {
             }
 
             closeAddModal();
+            refetch();
             console.log("Filme adicionado com sucesso!");
         } catch (error) {
             console.error("Erro:", error);
